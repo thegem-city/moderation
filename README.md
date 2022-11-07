@@ -2,6 +2,12 @@
 
 This repository contains moderation tools and data for [thegem.city](https://thegem.city/).
 
+# Internals
+
+This uses the `/api/v1/admin/domain_blocks` API resource to retrieve the list of currently blocked domains at the server level and then block any domains from a given domain source.
+
+The source can either be an HTTPS resource or a local file.
+
 # Usage
 
 1. Generate a token via your application settings page: https://thegem.city/settings/applications
