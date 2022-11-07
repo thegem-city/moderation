@@ -10,6 +10,7 @@ async def main():
     parser.add_argument("--server", default=os.environ.get("SERVER", "thegem.city"))
     parser.add_argument("--token", default=os.environ.get("TOKEN"))
     parser.add_argument("--source", default=os.environ.get("SOURCE", "./domains"))
+    parser.add_argument("--severity", default=os.environ.get("SEVERITY", "suspend"))
 
     args = parser.parse_args()
 
@@ -30,7 +31,7 @@ async def main():
             if domain in blocked_domains:
                 continue
             async with session.post(
-                url, headers=headers, data={"domain": domain, "severity": "suspend"}
+                url, headers=headers, data={"domain": domain, "severity": args.severity}
             ) as resp:
                 print(f"{domain} {resp.status}")
 
