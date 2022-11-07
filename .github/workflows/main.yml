@@ -6,8 +6,13 @@ on:
 jobs:
   update_blocklist:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://thegem.city/
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-python@v4.3.0
     - run: pip install aiohttp
     - run: python ./update_blocklist.py
+      env: # Or as an environment variable
+        TOKEN: ${{ secrets.MASTO_TOKEN }}
