@@ -28,13 +28,13 @@ You can easily adapt this to your own instance with a few small changes:
 1. Create a GitHub environment called "production" and set the "MASTO_TOKEN" secret to the generated token in the `Usage` step.
 2. Update the python script executable step to include your server URL and source:
 
-   ```
+```yaml
 - run: python ./update_blocklist.py
   env:
     TOKEN: ${{ secrets.MASTO_TOKEN }}
     SERVER: your-instance.com
     SOURCE: "./domains"
     SEVERITY: "suspend"
-   ```
+```
 
 Bonus points if you have steps for multiple files for different severities.
